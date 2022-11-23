@@ -2,8 +2,9 @@
 
 import Foundation
 import UIKit
-// CREATIONAL
-// Factory Method
+
+// Reference: https://refactoring.guru/design-patterns/factory-method
+// Factory Method - Creational
 protocol Payment {
     func doPayment()
 }
