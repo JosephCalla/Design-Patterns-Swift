@@ -2,7 +2,7 @@
 
 Builder Method
 
-```
+```Swift
 // Factory Method - Creational
 protocol Payment {
     func doPayment()
