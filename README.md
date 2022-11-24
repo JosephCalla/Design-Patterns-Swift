@@ -3,7 +3,7 @@
 | Structural patterns | Behavioral patterns | Creational patterns |
 |-----|-----------|-----------|
 | Adapter | Chain of Responsibility | 🚧 Factory Method |
-| Decorator| Command | 🏗️ Builder | 
+| Decorator| Command | 👷‍ Builder | 
 | Bridge | Iterator | 🧘 Singleton|
 | Composite | Mediator | Abstract Factory |
 | Facate | Memento | Prototype |
@@ -76,7 +76,7 @@ testFactoryMethod()
 **Disadvantages of Factory Method Pattern**
 - 🔴 The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
  
-## 🏗️ Builder Pattern
+## 👷‍♂️ Builder Pattern
 
 Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
 
