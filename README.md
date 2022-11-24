@@ -52,3 +52,59 @@ func testFactoryMethod() {
 
 testFactoryMethod()
 ```
+
+
+
+
+**Builder Pattern**
+
+Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
+
+![Screenshot 2022-11-24 at 00 09 42](https://user-images.githubusercontent.com/35270796/203699202-5465266d-0553-4b00-b17c-e881cb032409.png)
+
+**Example**
+```Swift
+class Card {
+    private var cardType: String = ""
+    private var number: String = ""
+    private var expired: Int = 0
+    
+    func showCard() {
+        print("Tarjeta \(cardType) - \(number) - \(expired)")
+    }
+    
+    class CardBuilder {
+        private var innerCard = Card()
+        
+        func cartType(cardType: String) -> CardBuilder {
+            innerCard.cardType = cardType
+            return self
+        }
+        
+        func number(number: String) -> CardBuilder {
+            innerCard.number = number
+            return self
+        }
+        
+        func expires(expires: Int) -> CardBuilder {
+            innerCard.expired = expires
+            return self
+        }
+        
+        func build() -> Card {
+            return innerCard
+        }
+    }
+}
+
+// Test
+func testBuilder() {
+    var card: Card = Card.CardBuilder()
+        .cartType(cardType: "VISA")
+        .build()
+    card.showCard()
+}
+
+testBuilder()
+
+```
