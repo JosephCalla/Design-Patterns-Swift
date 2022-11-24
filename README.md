@@ -2,9 +2,9 @@
 
 | Structural patterns | Behavioral patterns | Creational patterns |
 |-----|-----------|-----------|
-| Adapter | Chain of Responsibility | Factory Method |
-| Decorator| Command | Builder | 
-| Bridge | Iterator | Singleton|
+| Adapter | Chain of Responsibility | 🚧 Factory Method |
+| Decorator| Command | 👷‍ Builder | 
+| Bridge | Iterator | 🧘 Singleton|
 | Composite | Mediator | Abstract Factory |
 | Facate | Memento | Prototype |
 | Proxy | Observer |  |
@@ -14,8 +14,8 @@
 |  | Visitor |  |
 
 
-## Structural Patterns
-**Factory Method**
+# Creational Patterns
+## 🚧 Factory Method
 
 Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
 
@@ -76,9 +76,7 @@ testFactoryMethod()
 **Disadvantages of Factory Method Pattern**
 - 🔴 The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
  
-## Creational Patterns
-
-**Builder Pattern**
+## 👷‍♂️ Builder Pattern
 
 Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
 
@@ -139,3 +137,44 @@ testBuilder()
 
 **Disadvantages of Builder Pattern**
 - 🔴 The overall complexity of the code increases since the pattern requires creating multiple new classes.
+
+
+## 🧘 Singleton Pattern
+
+Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
+
+![image](https://user-images.githubusercontent.com/35270796/203810419-b2303c49-7660-4ada-8034-d5038c40109d.png)
+
+
+```Swift
+class CardSingleton {
+    static var shared = CardSingleton() // Singleton
+    
+    private init(){} // Important!
+    
+    func doSomething() {
+        print("Haciendo trabajo de la clase Singleton")
+    }
+}
+
+func testSingleton() {
+    let instancia1 = CardSingleton.shared
+    let instancia1 = CardSingleton.shared
+    
+    // Just for testing to verify that they're have only one instance
+    if instancia2 == instancia1 {
+        print("La instancia1 es la misma que la 2")
+    }
+}
+```
+
+**Advantage of Singleton Pattern**
+- 🟢 You can be sure that a class has only a single instance.
+- 🟢 You gain a global access point to that instance.
+- 🟢 The singleton object is initialized only when it’s requested for the first time.
+
+**Disadvantages of Singleton Pattern**
+- 🔴 Violates the Single Responsibility Principle. The pattern solves two problems at the time.
+- 🔴 The Singleton pattern can mask bad design, for instance, when the components of the program know too much about each other.
+- 🔴 The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times.
+- 🔴 It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write the tests. Or don’t use the Singleton pattern.
