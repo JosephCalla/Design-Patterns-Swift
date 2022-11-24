@@ -4,7 +4,7 @@
 |-----|-----------|-----------|
 | Adapter | Chain of Responsibility | Factory Method |
 | Decorator| Command | Builder | 
-| Bridge | Iterator | Singleton|
+| Bridge | Iterator | 🧘 Singleton|
 | Composite | Mediator | Abstract Factory |
 | Facate | Memento | Prototype |
 | Proxy | Observer |  |
@@ -14,8 +14,8 @@
 |  | Visitor |  |
 
 
-## Structural Patterns
-**Factory Method**
+# Structural Patterns
+## Factory Method
 
 Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
 
@@ -76,9 +76,9 @@ testFactoryMethod()
 **Disadvantages of Factory Method Pattern**
 - 🔴 The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
  
-## Creational Patterns
+# Creational Patterns
 
-**Builder Pattern**
+## Builder Pattern
 
 Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
 
@@ -141,8 +141,12 @@ testBuilder()
 - 🔴 The overall complexity of the code increases since the pattern requires creating multiple new classes.
 
 
-**Singleton**
+## 🧘 Singleton Pattern
+
 Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
+
+![image](https://user-images.githubusercontent.com/35270796/203810419-b2303c49-7660-4ada-8034-d5038c40109d.png)
+
 
 ```Swift
 class CardSingleton {
