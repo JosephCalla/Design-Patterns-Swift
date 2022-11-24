@@ -1,8 +1,17 @@
 # Design-Patterns-Swift
 
-- Structural Patterns
-- Behaivoral Patterns
-- Creational Patterns
+| Structural patterns | Behavioral patterns | Creational patterns |
+|-----|-----------|-----------|
+| Adapter | Chain of Responsibility | Factory Method |
+| Decorator| Command | Builder | 
+| Bridge | Iterator | Singleton|
+| Composite | Mediator | Abstract Factory |
+| Facate | Memento | Prototype |
+| Proxy | Observer |  |
+| Flyweight | State |  |
+|  | Strategy |  |
+|  | Template Method |  |
+|  | Visitor |  |
 
 
 ## Structural Patterns
