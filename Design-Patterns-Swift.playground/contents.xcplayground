@@ -4,5 +4,7 @@
         <page name='Factory Method'/>
         <page name='Builder'/>
         <page name='Singleton'/>
+        <page name='Observer'/>
+        <page name='Untitled Page'/>
     </pages>
 </playground>
