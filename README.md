@@ -178,3 +178,95 @@ func testSingleton() {
 - 🔴 The Singleton pattern can mask bad design, for instance, when the components of the program know too much about each other.
 - 🔴 The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times.
 - 🔴 It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write the tests. Or don’t use the Singleton pattern.
+
+# Behavioral patterns
+## Observer Pattern
+Observer is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.
+![Screenshot 2022-11-24 at 10 15 25](https://user-images.githubusercontent.com/35270796/203817619-7d0dd8be-7d69-410d-9262-f1f88e622367.png)
+
+```Swift
+
+struct TrafficLight {
+    var status: String
+}
+
+/// Observer: Es la interfaz que define las operaciones que se utilizan para notificar al "Subject"
+protocol Observer {
+    func update(traffictLight: TrafficLight)
+}
+
+
+protocol Subject {
+    func addObserver(o: Observer)
+    func deleteObserver(o: Observer)
+    func notifyUpdate(trafficLight: TrafficLight)
+}
+
+
+class MessagePublisher: Subject {
+    var observers = [Observer]()
+    func addObserver(o: Observer) {
+        observers.append(o)
+    }
+    
+    func deleteObserver(o: Observer) {
+        if let index = observers.firstIndex(where: { $0 as AnyObject === o as AnyObject}) {
+            observers.remove(at: index)
+        }
+    }
+    
+    func notifyUpdate(trafficLight: TrafficLight) {
+        observers.forEach { $0.update(traffictLight: trafficLight) }
+    }
+}
+
+/// ConcreteObserverA
+class  Car: Observer {
+    func update(traffictLight: TrafficLight) {
+        if traffictLight.status as AnyObject === "CAR_RED" as AnyObject {
+            print("Semaforo coche Rojo -> Coche NO puede pasar")
+        } else {
+            print("Semaforo coche Verde -> Coche SI puede pasar")
+        }
+    }
+}
+
+
+/// ConcreteObserverB
+class Pedestrian: Observer {
+    func update(traffictLight: TrafficLight) {
+        if traffictLight.status as AnyObject === "CAR_RED" as AnyObject {
+            print("Semaforo peaton Verde -> PEATON SI puede pasar")
+        } else {
+            print("Semaforo peaton Rojo -> PEATON NO puede pasar")
+        }
+    }
+}
+
+
+// TEST
+func testObserver() {
+    let car = Car()
+    let pedestrian = Pedestrian()
+    var trafficLight = TrafficLight(status: "CAR_GREEN")
+    let messagePublisher = MessagePublisher()
+    
+    messagePublisher.addObserver(o: car)
+    messagePublisher.addObserver(o: pedestrian)
+    messagePublisher.notifyUpdate(trafficLight: trafficLight)
+    sleep(2)
+    print("After sleep")
+    TrafficLight(status: "CARD_RED")
+    messagePublisher.notifyUpdate(trafficLight: trafficLight)
+}
+
+testObserver()
+```
+
+**Advantage of Observer Pattern**
+- 🟢 Open/Closed Principle. You can introduce new subscriber classes without having to change the publisher’s code (and vice versa if there’s a publisher interface).
+- 🟢 You can establish relations between objects at runtime.
+
+**Disadvantages of Observer Patter**
+- 🔴 Subscribers are notified in random order.
+
