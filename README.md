@@ -276,7 +276,7 @@ testObserver()
 **Disadvantages of Observer Patter**
 - 🔴 Subscribers are notified in random order.
 
-## Structural patterns
-# Adapter
+# Structural patterns
+## Adapter
 
 
