@@ -1,5 +1,11 @@
 # Design-Patterns-Swift
 
+- Structural Patterns
+- Behaivoral Patterns
+- Creational Patterns
+
+
+## Structural Patterns
 **Factory Method**
 
 Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
@@ -53,8 +59,7 @@ func testFactoryMethod() {
 testFactoryMethod()
 ```
 
-
-
+## Creational Patterns
 
 **Builder Pattern**
 
@@ -108,3 +113,5 @@ func testBuilder() {
 testBuilder()
 
 ```
+
+
