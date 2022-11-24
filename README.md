@@ -7,7 +7,7 @@
 | Bridge | Iterator | 🧘 Singleton|
 | Composite | Mediator | Abstract Factory |
 | Facate | Memento | Prototype |
-| Proxy | Observer |  |
+| Proxy | 🧐 Observer |  |
 | Flyweight | State |  |
 |  | Strategy |  |
 |  | Template Method |  |
@@ -180,7 +180,7 @@ func testSingleton() {
 - 🔴 It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write the tests. Or don’t use the Singleton pattern.
 
 # Behavioral patterns
-## Observer Pattern
+## 🧐 Observer Pattern
 Observer is a behavioral design pattern that allows some objects to notify other objects about changes in their state.
 
 The Observer pattern provides a way to subscribe and unsubscribe to and from these events for any object that implements a subscriber interface.
