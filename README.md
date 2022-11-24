@@ -181,10 +181,15 @@ func testSingleton() {
 
 # Behavioral patterns
 ## Observer Pattern
-Observer is a behavioral design pattern that lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they’re observing.
+Observer is a behavioral design pattern that allows some objects to notify other objects about changes in their state.
+
+The Observer pattern provides a way to subscribe and unsubscribe to and from these events for any object that implements a subscriber interface.
 
 ![Screenshot 2022-11-24 at 10 15 25](https://user-images.githubusercontent.com/35270796/203817619-7d0dd8be-7d69-410d-9262-f1f88e622367.png)
-
+- Subject: 
+- Observer: 
+- ConcreteObserver:
+- NotifyObservers:
 ```Swift
 
 struct TrafficLight {
