@@ -2,8 +2,8 @@
 
 | Structural patterns | Behavioral patterns | Creational patterns |
 |-----|-----------|-----------|
-| Adapter | Chain of Responsibility | Factory Method |
-| Decorator| Command | Builder | 
+| Adapter | Chain of Responsibility | 🚧 Factory Method |
+| Decorator| Command | 🏗️ Builder | 
 | Bridge | Iterator | 🧘 Singleton|
 | Composite | Mediator | Abstract Factory |
 | Facate | Memento | Prototype |
@@ -15,7 +15,7 @@
 
 
 # Structural Patterns
-## Factory Method
+## 🚧 Factory Method
 
 Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.
 
@@ -78,7 +78,7 @@ testFactoryMethod()
  
 # Creational Patterns
 
-## Builder Pattern
+## 🏗️ Builder Pattern
 
 Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
 
