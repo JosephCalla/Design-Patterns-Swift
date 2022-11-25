@@ -39,6 +39,36 @@ Software entities, including classes, modules and functions, should be open for 
 
 This means you should be able to expand the capabilities of your types without having to alter them drastically to add what you need.
 
+**Examples 1**
+
+```Swift 
+import UIKit
+
+protocol LoginServiceProtocol {
+    func login(completion: @escaping (Bool) -> Void)
+}
+class LoginService: LoginServiceProtocol {
+    func login(completion: @escaping (Bool) -> Void) {
+        URLSession.shared.dataTask(with: URL(string: "https://any-url.com/")!) { data, response, error in
+            if let _ = error {
+                completion(false)
+            } else {
+                //logic
+                completion(true)
+            }
+        }.resume ()
+    }
+}
+
+class LoginFacebookService: LoginServiceProtocol {
+    func login(completion: @escaping (Bool) -> Void) {
+        // SDK Facebook
+    }
+}
+```
+
+**Examples 2**
+
 ❌ BAD
 ```Swift 
 class Car {
