@@ -47,6 +47,7 @@ import UIKit
 protocol LoginServiceProtocol {
     func login(completion: @escaping (Bool) -> Void)
 }
+
 class LoginService: LoginServiceProtocol {
     func login(completion: @escaping (Bool) -> Void) {
         URLSession.shared.dataTask(with: URL(string: "https://any-url.com/")!) { data, response, error in
@@ -63,6 +64,7 @@ class LoginService: LoginServiceProtocol {
 class LoginFacebookService: LoginServiceProtocol {
     func login(completion: @escaping (Bool) -> Void) {
         // SDK Facebook
+	completion(true)
     }
 }
 ```
