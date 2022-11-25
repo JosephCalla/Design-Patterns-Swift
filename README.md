@@ -22,6 +22,23 @@
 
 ## Single responsability principle
 A class should have one responsability.
+
+```Swift
+class Car {
+	var licensePlate: String
+	init(licensePlate: String) { self.licensePlate = licensePlate }
+}
+class CarBD {
+	func saveCarDB(car: Car) {}
+	func deleteCarDB(car: Car) {}
+}
+```
+
+## Open/Closed
+Software entities, including classes, modules and functions, should be open for extension but closed for modification.
+
+This means you should be able to expand the capabilities of your types without having to alter them drastically to add what you need.
+
 ❌ BAD
 ```Swift 
 class Car {
@@ -41,23 +58,7 @@ func printCarsPrice(_ cars: [Car]) {
 printCarsPrice(cars)
 ```
 
-✅ Good
-```Swift
-class Car {
-	var licensePlate: String
-	init(licensePlate: String) { self.licensePlate = licensePlate }
-}
-class CarBD {
-	func saveCarDB(car: Car) {}
-	func deleteCarDB(car: Car) {}
-}
-```
-
-## Open/Closed
-Software entities, including classes, modules and functions, should be open for extension but closed for modification.
-
-This means you should be able to expand the capabilities of your types without having to alter them drastically to add what you need.
-
+✅ GOOD
 ```Swift
 protocol Car { func price()-> Int }
 
