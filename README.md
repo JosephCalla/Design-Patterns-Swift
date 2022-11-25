@@ -233,6 +233,7 @@ Depend upon abstractions, not concretions.
 Different parts of your code should not depend on concrete classes. They don’t need that knowledge. This encourages the use of protocols instead of using concrete classes to connect parts of your app.
 
 
+
 # Creational Patterns
 ## 🚧 Factory Method
 
