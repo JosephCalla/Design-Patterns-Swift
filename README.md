@@ -138,11 +138,11 @@ func printCarsPrice(_ cars: [Car]) {
 printCarsPrice(cars)
 ```
 ## Liskov Substitution
-Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.
+
+Establishes that a class that inherits from another can be used as its parent without needing to know the differences between them.
 
 In other words, if you replace one object with another that’s a subclass and this replacement could break the affected part, then you’re not following this principle.
 
-Establishes that a class that inherits from another can be used as its parent without needing to know the differences between them.
 
 ```Swift
 protocol UserDataBaseManagerProtocol {
