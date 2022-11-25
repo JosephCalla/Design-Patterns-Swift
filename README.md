@@ -22,7 +22,26 @@
 
 ## Single responsability principle
 A class should have one responsability.
+❌ BAD
+```Swift 
+class Car {
+    var brand: String
+    init(brand: String) { self.brand = brand }
+}
+var cars: [Car] = [
+    Car(brand: "Ford"),
+    Car(brand: "Chevrolet")
+] 
+func printCarsPrice(_ cars: [Car]) {
+    for car in cars {
+        if car.brand == "Ford" { print(2000)  } // 2000
+        if car.brand == "Chevrolet" { print(3200)  } // 3000
+    }
+}
+printCarsPrice(cars)
+```
 
+✅ Good
 ```Swift
 class Car {
 	var licensePlate: String
