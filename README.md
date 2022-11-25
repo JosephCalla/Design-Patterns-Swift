@@ -57,6 +57,27 @@ func printCarsPrice(_ cars: [Car]) {
 }
 printCarsPrice(cars)
 ```
+Why is that code is ❌ Bad ?
+
+Because this does not follow the open-closed principle, since if we wanted to add a new car:
+```Swift
+var cars: [Car] = [
+	Car(brand: "Ford"),
+   	Car(brand: "Chevrolet"),
+   	Car(brand: "Jeep")   	    
+]	 
+```
+
+We would also have to modify the method we created previously:
+```Swift
+func printCarsPrice(_ cars: [Car]) {
+    for car in cars {
+        if car.brand == "Ford" { print(2000)  } // 2000
+        if car.brand == "Chevrolet" { print(3200)  } // 3000
+        if car.brand == "Jeep" { print(1450)  } // 1450
+    }
+}
+```
 
 ✅ GOOD
 ```Swift
