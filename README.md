@@ -142,11 +142,91 @@ Objects in a program should be replaceable with instances of their subtypes with
 
 In other words, if you replace one object with another that’s a subclass and this replacement could break the affected part, then you’re not following this principle.
 
+Establishes that a class that inherits from another can be used as its parent without needing to know the differences between them.
+
+```Swift
+protocol UserDataBaseManagerProtocol {
+  func saveUser(user: User)
+}
+
+class UserDataBaseManager: UserDataBaseManagerProtocol {
+  func saveUser(user: User) {
+  	// Save user on DB
+  }
+}
+```
 ## Interface segregation
 Clients should not be forced to depend upon interfaces they do not use.
 
 When designing a protocol you’ll use in different places in your code, it’s best to break that protocol into multiple smaller pieces where each piece has a specific role. That way, clients depend only on the part of the protocol they need.
 
+Take for **example** this struct 
+``` Swift
+protocol Bird {
+    func eat() 
+    func fly() 
+}
+
+class Pigeon: Bird {
+    func eat() {}
+    func fly() {}
+}
+class Parrot: Bird  {
+    func eat() {}
+    func fly() {}
+}
+```
+
+⚠️ Well, but now i want to add a new Penguien class. As you know, they're birds but it can swimming also.
+
+```Swift
+protocol Bird {
+    func eat() 
+    func fly() 
+    func swim() 
+}
+
+class Pigeon: Bird {
+    func eat() {}
+    func fly() {}
+    func swim() {}
+}
+class Parrot: Bird  {
+    func eat() {}
+    func fly() {}
+    func swim() {}
+}
+class Penguin: Bird  {
+    func eat() {}
+    func fly() {}
+    func swim() {}
+}
+```
+
+The problem is that dove 🕊️  can't swimming and pingüino 🐧 can't fly. The solution would be se Interface segregation. ✅
+
+```Swift
+protocol Bird {
+    func eat()  
+}
+
+protocol FlyingBird {
+    func fly() 
+}
+protocol SwimmingBird {
+    func swim() 
+}
+
+class Pigeon: Bird, FlyingBird  {
+    func eat() {}
+    func fly() {}
+}
+class Penguin: Bird, SwimmingBird {
+    func eat() {}
+    func swim() {}
+}
+
+```
 ## Dependency inversion
 Depend upon abstractions, not concretions.
 
