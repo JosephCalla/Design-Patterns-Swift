@@ -13,6 +13,73 @@
 |  | Template Method |  |
 |  | Visitor |  |
 
+# SOLID
+- **S** - Single responsability principle
+- **O** - Open/Closed principle
+- **L** - Liskov substitution principle
+- **I** - Interface segregation principle
+- **D** - Dependency inversion principle
+
+## Single responsability principle
+A class should have one responsability.
+
+```Swift
+class Car {
+	var licensePlate: String
+	init(licensePlate: String) { self.licensePlate = licensePlate }
+}
+class CarBD {
+	func saveCarDB(car: Car) {}
+	func deleteCarDB(car: Car) {}
+}
+```
+
+## Open/Closed
+Software entities, including classes, modules and functions, should be open for extension but closed for modification.
+
+This means you should be able to expand the capabilities of your types without having to alter them drastically to add what you need.
+
+```Swift
+protocol Car { func price()-> Int }
+
+class Ford: Car {
+    func price()-> Int { return 2000 }
+}
+class Chevrolet: Car {
+    func price()-> Int { return 3000 }
+}
+class Jeep: Car {
+    func price()-> Int { return 1450 }
+}
+var cars: [Car] = [
+    Chevrolet(),
+    Ford(),
+    Jeep()
+] 
+
+func printCarsPrice(_ cars: [Car]) {
+    for car in cars {
+        print(car.price())
+    }
+}
+
+printCarsPrice(cars)
+```
+## Liskov Substitution
+Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.
+
+In other words, if you replace one object with another that’s a subclass and this replacement could break the affected part, then you’re not following this principle.
+
+## Interface segregation
+Clients should not be forced to depend upon interfaces they do not use.
+
+When designing a protocol you’ll use in different places in your code, it’s best to break that protocol into multiple smaller pieces where each piece has a specific role. That way, clients depend only on the part of the protocol they need.
+
+## Dependency inversion
+Depend upon abstractions, not concretions.
+
+Different parts of your code should not depend on concrete classes. They don’t need that knowledge. This encourages the use of protocols instead of using concrete classes to connect parts of your app.
+
 
 # Creational Patterns
 ## 🚧 Factory Method
