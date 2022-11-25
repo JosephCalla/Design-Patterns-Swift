@@ -66,7 +66,6 @@ class LoginFacebookService: LoginServiceProtocol {
     }
 }
 ```
-
 **Examples 2**
 
 ❌ BAD
