@@ -13,6 +13,226 @@
 |  | Template Method |  |
 |  | Visitor |  |
 
+# SOLID
+- **S** - Single responsability principle
+- **O** - Open/Closed principle
+- **L** - Liskov substitution principle
+- **I** - Interface segregation principle
+- **D** - Dependency inversion principle
+
+## Single responsability principle
+A class should have one responsability.
+
+```Swift
+class Car {
+	var licensePlate: String
+	init(licensePlate: String) { self.licensePlate = licensePlate }
+}
+class CarBD {
+	func saveCarDB(car: Car) {}
+	func deleteCarDB(car: Car) {}
+}
+```
+
+## Open/Closed
+Software entities, including classes, modules and functions, should be open for extension but closed for modification.
+
+This means you should be able to expand the capabilities of your types without having to alter them drastically to add what you need.
+
+**Examples 1**
+
+```Swift 
+import UIKit
+
+protocol LoginServiceProtocol {
+    func login(completion: @escaping (Bool) -> Void)
+}
+
+class LoginService: LoginServiceProtocol {
+    func login(completion: @escaping (Bool) -> Void) {
+        URLSession.shared.dataTask(with: URL(string: "https://any-url.com/")!) { data, response, error in
+            if let _ = error {
+                completion(false)
+            } else {
+                //logic
+                completion(true)
+            }
+        }.resume ()
+    }
+}
+
+class LoginFacebookService: LoginServiceProtocol {
+    func login(completion: @escaping (Bool) -> Void) {
+        // SDK Facebook
+	completion(true)
+    }
+}
+```
+**Examples 2**
+
+❌ BAD
+```Swift 
+class Car {
+    var brand: String
+    init(brand: String) { self.brand = brand }
+}
+var cars: [Car] = [
+    Car(brand: "Ford"),
+    Car(brand: "Chevrolet")
+] 
+func printCarsPrice(_ cars: [Car]) {
+    for car in cars {
+        if car.brand == "Ford" { print(2000)  } // 2000
+        if car.brand == "Chevrolet" { print(3200)  } // 3000
+    }
+}
+printCarsPrice(cars)
+```
+Why is that code is ❌ Bad ?
+
+Because this does not follow the open-closed principle, since if we wanted to add a new car:
+```Swift
+var cars: [Car] = [
+	Car(brand: "Ford"),
+   	Car(brand: "Chevrolet"),
+   	Car(brand: "Jeep")   	    
+]	 
+```
+
+We would also have to modify the method we created previously:
+```Swift
+func printCarsPrice(_ cars: [Car]) {
+    for car in cars {
+        if car.brand == "Ford" { print(2000)  } // 2000
+        if car.brand == "Chevrolet" { print(3200)  } // 3000
+        if car.brand == "Jeep" { print(1450)  } // 1450
+    }
+}
+```
+
+✅ GOOD
+```Swift
+protocol Car { func price()-> Int }
+
+class Ford: Car {
+    func price()-> Int { return 2000 }
+}
+class Chevrolet: Car {
+    func price()-> Int { return 3000 }
+}
+class Jeep: Car {
+    func price()-> Int { return 1450 }
+}
+var cars: [Car] = [
+    Chevrolet(),
+    Ford(),
+    Jeep()
+] 
+
+func printCarsPrice(_ cars: [Car]) {
+    for car in cars {
+        print(car.price())
+    }
+}
+
+printCarsPrice(cars)
+```
+## Liskov Substitution
+
+Establishes that a class that inherits from another can be used as its parent without needing to know the differences between them.
+
+In other words, if you replace one object with another that’s a subclass and this replacement could break the affected part, then you’re not following this principle.
+
+
+```Swift
+protocol UserDataBaseManagerProtocol {
+  func saveUser(user: User)
+}
+
+class UserDataBaseManager: UserDataBaseManagerProtocol {
+  func saveUser(user: User) {
+  	// Save user on DB
+  }
+}
+```
+## Interface segregation
+Clients should not be forced to depend upon interfaces they do not use.
+
+When designing a protocol you’ll use in different places in your code, it’s best to break that protocol into multiple smaller pieces where each piece has a specific role. That way, clients depend only on the part of the protocol they need.
+
+Take for **example** this struct 
+``` Swift
+protocol Bird {
+    func eat() 
+    func fly() 
+}
+
+class Pigeon: Bird {
+    func eat() {}
+    func fly() {}
+}
+class Parrot: Bird  {
+    func eat() {}
+    func fly() {}
+}
+```
+
+⚠️ Well, but now i want to add a new Penguien class. As you know, they're birds but it can swimming also.
+
+```Swift
+protocol Bird {
+    func eat() 
+    func fly() 
+    func swim() 
+}
+
+class Pigeon: Bird {
+    func eat() {}
+    func fly() {}
+    func swim() {}
+}
+class Parrot: Bird  {
+    func eat() {}
+    func fly() {}
+    func swim() {}
+}
+class Penguin: Bird  {
+    func eat() {}
+    func fly() {}
+    func swim() {}
+}
+```
+
+The problem is that dove 🕊️  can't swimming and pingüino 🐧 can't fly. The solution would be se Interface segregation. ✅
+
+```Swift
+protocol Bird {
+    func eat()  
+}
+
+protocol FlyingBird {
+    func fly() 
+}
+protocol SwimmingBird {
+    func swim() 
+}
+
+class Pigeon: Bird, FlyingBird  {
+    func eat() {}
+    func fly() {}
+}
+class Penguin: Bird, SwimmingBird {
+    func eat() {}
+    func swim() {}
+}
+
+```
+## Dependency inversion
+Depend upon abstractions, not concretions.
+
+Different parts of your code should not depend on concrete classes. They don’t need that knowledge. This encourages the use of protocols instead of using concrete classes to connect parts of your app.
+
+
 
 # Creational Patterns
 ## 🚧 Factory Method
@@ -278,5 +498,60 @@ testObserver()
 
 # Structural patterns
 ## Adapter
+Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
 
+![Screenshot 2022-11-26 at 19 26 34](https://user-images.githubusercontent.com/35270796/204113926-72659bc5-079f-4654-8293-802a7c1f0ff5.png)
+
+```Swift
+protocol OperationTarget {
+    var getSum: String {get}
+}
+
+class OperationAdaptee {
+    var a: Int
+    var b: Int
+    init(a: Int, b: Int) {
+        self.a = a
+        self.b = b
+    }
+    
+    func sum() -> Int {
+        return a + b
+    }
+}
+
+class OperationAdapter: OperationTarget {
+    let adaptee: OperationAdaptee
+    
+    init(adaptee: OperationAdaptee) {
+        self.adaptee  = adaptee
+    }
+    var getSum: String {
+        return String(self.adaptee.sum())
+    }
+}
+
+// Test
+func testAdapter() {
+    let adaptee = OperationAdaptee(a: 3, b: 4)
+    if (adaptee.sum() == 7) {
+        print("Ok int")
+    }
+    
+    let target = OperationAdapter(adaptee: adaptee)
+    if target.getSum == "7" {
+        print("Ok String")
+    }
+    print(target.getSum)
+}
+
+testAdapter()
+```
+
+**Advantage of Adapter Pattern**
+- 🟢 Single Responsibility Principle. You can separate the interface or data conversion code from the primary business logic of the program.
+- 🟢 Open/Closed Principle. You can introduce new types of adapters into the program without breaking the existing client code, as long as they work with the adapters through the client interface.
+
+**Disadvantages of Adapter Patter**
+- 🔴  The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
 
