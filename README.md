@@ -498,5 +498,60 @@ testObserver()
 
 # Structural patterns
 ## Adapter
+Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
 
+![Screenshot 2022-11-26 at 19 26 34](https://user-images.githubusercontent.com/35270796/204113926-72659bc5-079f-4654-8293-802a7c1f0ff5.png)
+
+```Swift
+protocol OperationTarget {
+    var getSum: String {get}
+}
+
+class OperationAdaptee {
+    var a: Int
+    var b: Int
+    init(a: Int, b: Int) {
+        self.a = a
+        self.b = b
+    }
+    
+    func sum() -> Int {
+        return a + b
+    }
+}
+
+class OperationAdapter: OperationTarget {
+    let adaptee: OperationAdaptee
+    
+    init(adaptee: OperationAdaptee) {
+        self.adaptee  = adaptee
+    }
+    var getSum: String {
+        return String(self.adaptee.sum())
+    }
+}
+
+// Test
+func testAdapter() {
+    let adaptee = OperationAdaptee(a: 3, b: 4)
+    if (adaptee.sum() == 7) {
+        print("Ok int")
+    }
+    
+    let target = OperationAdapter(adaptee: adaptee)
+    if target.getSum == "7" {
+        print("Ok String")
+    }
+    print(target.getSum)
+}
+
+testAdapter()
+```
+
+**Advantage of Adapter Pattern**
+- 🟢 Single Responsibility Principle. You can separate the interface or data conversion code from the primary business logic of the program.
+- 🟢 Open/Closed Principle. You can introduce new types of adapters into the program without breaking the existing client code, as long as they work with the adapters through the client interface.
+
+**Disadvantages of Adapter Patter**
+- 🔴  The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
 
