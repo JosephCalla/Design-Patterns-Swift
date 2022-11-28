@@ -6,5 +6,6 @@
         <page name='Singleton'/>
         <page name='Observer'/>
         <page name='Adapter'/>
+        <page name='Facade'/>
     </pages>
 </playground>
