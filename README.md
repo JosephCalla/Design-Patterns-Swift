@@ -34,6 +34,8 @@ class CarBD {
 }
 ```
 
+Is this class obserblable?
+
 ## Open/Closed
 Software entities, including classes, modules and functions, should be open for extension but closed for modification.
 
