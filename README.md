@@ -626,4 +626,3 @@ func testFacade() {
 
 testFacade()
 ```
-   
