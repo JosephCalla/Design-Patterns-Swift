@@ -6,7 +6,7 @@
 | Decorator| Command | 👷‍ Builder | 
 | Bridge | Iterator | 🧘 Singleton|
 | Composite | Mediator | Abstract Factory |
-| Facate | Memento | Prototype |
+| Facade | Memento | Prototype |
 | Proxy | 🧐 Observer |  |
 | Flyweight | State |  |
 |  | Strategy |  |
@@ -555,9 +555,9 @@ testAdapter()
 - 🟢 Open/Closed Principle. You can introduce new types of adapters into the program without breaking the existing client code, as long as they work with the adapters through the client interface.
 
 **Disadvantages of Adapter Patter**
-- 🔴  The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
+- 🔴 The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
 
-## Facate
+## Facade
 Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.
 
 **Problem**
@@ -620,10 +620,10 @@ class CreditMarketFacade {
 
 /// Test
 func testFacade() {
-    let facate = CreditMarketFacade()
-    facate.showCreditBlack()
-    facate.showCreditGold()
-    facate.showCreditSilver()
+    let facade = CreditMarketFacade()
+    facade.showCreditBlack()
+    facade.showCreditGold()
+    facade.showCreditSilver()
 }
 
 testFacade()
@@ -632,7 +632,7 @@ testFacade()
 ## Proxy pattern
 Un proxy controla el acceso al objeto original, lo que le permite realizar algo antes o después de que la solicitud llegue al objeto original.
 
-¿cuál es el beneficio? Si necesita ejecutar algo antes o después de la lógica principal de la clase, el proxy le permite hacerlo sin cambiar esa clase. Dado que el proxy implementa la misma interfaz que la clase original, se puede pasar a cualquier cliente que espere un objeto de servicio real.
+**¿cuál es el beneficio?** Si necesita ejecutar algo antes o después de la lógica principal de la clase, el proxy le permite hacerlo sin cambiar esa clase. Dado que el proxy implementa la misma interfaz que la clase original, se puede pasar a cualquier cliente que espere un objeto de servicio real.
 
 Por lo tanto, las llamadas al objeto acaban ocurriendo indirectamente a traves del objeto proxy es el que actua como sustitu del objeto original, delegando las llamadas a los metodos de los objetos
 
@@ -675,3 +675,15 @@ El proxy también puede rastrear si el cliente modificó el objeto de servicio. 
 
 
 ![Screenshot 2022-12-01 at 07 41 08](https://user-images.githubusercontent.com/35270796/205055409-1e6d4548-cfb3-4d54-89cb-cec336f94b8f.png)
+
+**Advantage of Adapter Pattern**
+- 🟢 Puede controlar el objeto de servicio sin que los clientes lo sepan.
+- 🟢 Puede administrar el ciclo de vida del objeto de servicio cuando a los clientes no les importa.
+- 🟢 El proxy funciona incluso si el objeto de servicio no está listo o disponible.
+- 🟢 Principio abierto/cerrado . Puede introducir nuevos proxies sin cambiar el servicio o los clientes.
+
+**Disadvantages of Adapter Patter**
+- 🔴 El código puede volverse más complicado ya que necesita introducir muchas clases nuevas.
+- 🔴 La respuesta del servicio puede retrasarse.
+
+
