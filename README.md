@@ -628,3 +628,50 @@ func testFacade() {
 
 testFacade()
 ```
+
+## Proxy pattern
+Un proxy controla el acceso al objeto original, lo que le permite realizar algo antes o después de que la solicitud llegue al objeto original.
+
+¿cuál es el beneficio? Si necesita ejecutar algo antes o después de la lógica principal de la clase, el proxy le permite hacerlo sin cambiar esa clase. Dado que el proxy implementa la misma interfaz que la clase original, se puede pasar a cualquier cliente que espere un objeto de servicio real.
+
+Por lo tanto, las llamadas al objeto acaban ocurriendo indirectamente a traves del objeto proxy es el que actua como sustitu del objeto original, delegando las llamadas a los metodos de los objetos
+
+La **clase Proxy** tiene un campo de referencia que apunta a un objeto de servicio(clase a controlar). Una vez que el proxy finaliza su procesamiento (p. ej., inicialización diferida, registro, control de acceso, almacenamiento en caché, etc.), pasa la solicitud al objeto de servicio.
+
+Por lo general, los proxies administran el ciclo de vida completo de sus objetos de servicio.
+
+**💡 Formas de utilizar el patrón Proxy**
+
+🐞 Inicialización diferida (**proxy virtual**). Esto es cuando tiene un objeto de servicio pesado que desperdicia recursos del sistema al estar siempre activo, aunque solo lo necesite de vez en cuando.
+
+⚡️ En lugar de crear el objeto cuando se inicia la aplicación, puede retrasar la inicialización del objeto hasta el momento en que realmente se necesite.
+
+
+🐞 Control de acceso (**proxy de protección**). Aquí es cuando desea que solo los clientes específicos puedan usar el objeto de servicio; por ejemplo, cuando sus objetos son partes cruciales de un sistema operativo y los clientes son varias aplicaciones lanzadas (incluidas las maliciosas).
+
+⚡️ El proxy puede pasar la solicitud al objeto de servicio solo si las credenciales del cliente coinciden con algunos criterios.
+
+
+🐞 Ejecución local de un servicio remoto (**proxy remoto**). Esto es cuando el objeto de servicio se encuentra en un servidor remoto.
+
+⚡️ En este caso, el proxy pasa la solicitud del cliente a través de la red, manejando todos los detalles desagradables del trabajo con la red.
+
+
+🐞 Solicitudes de registro (**proxy de registro**). Aquí es cuando desea mantener un historial de solicitudes al objeto de servicio.
+
+⚡️ El proxy puede registrar cada solicitud antes de pasarla al servicio.n/
+
+
+🐞 Almacenamiento en caché de los resultados de la solicitud (**caching proxy**). Aquí es cuando necesita almacenar en caché los resultados de las solicitudes de los clientes y administrar el ciclo de vida de este caché, especialmente si los resultados son bastante grandes.
+
+⚡️ El proxy puede implementar el almacenamiento en caché para solicitudes recurrentes que siempre arrojan los mismos resultados. El proxy puede usar los parámetros de las solicitudes como claves de caché.
+
+
+🐞 **Referencia inteligente**. Esto es cuando necesita poder descartar un objeto pesado una vez que no haya clientes que lo usen.
+
+⚡️ El proxy puede realizar un seguimiento de los clientes que obtuvieron una referencia al objeto de servicio o sus resultados. De vez en cuando, el ⚡️ proxy puede revisar los clientes y verificar si todavía están activos. Si la lista de clientes se vacía, el proxy podría descartar el objeto de servicio y liberar los recursos del sistema subyacente.
+
+El proxy también puede rastrear si el cliente modificó el objeto de servicio. Luego, los objetos sin modificar pueden ser reutilizados por otros clientes.
+
+
+![Screenshot 2022-12-01 at 07 41 08](https://user-images.githubusercontent.com/35270796/205055409-1e6d4548-cfb3-4d54-89cb-cec336f94b8f.png)
