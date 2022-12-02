@@ -2,12 +2,12 @@
 
 | Structural patterns | Behavioral patterns | Creational patterns |
 |-----|-----------|-----------|
-| Adapter | Chain of Responsibility | 🚧 Factory Method |
-| Decorator| Command | 👷‍ Builder | 
-| Bridge | Iterator | 🧘 Singleton|
+| ✌️ [Adapter](https://github.com/JosephCalla/Design-Patterns-Swift#adapter) | Chain of Responsibility | 🚧 [Factory Method](https://github.com/JosephCalla/Design-Patterns-Swift#-factory-method) |
+| Decorator| Command | 👷‍ [Builder](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-builder-pattern) | 
+| Bridge | Iterator | 🧘 [Singleton](https://github.com/JosephCalla/Design-Patterns-Swift#-singleton-pattern) |
 | Composite | Mediator | Abstract Factory |
-| Facade | Memento | Prototype |
-| Proxy | 🧐 Observer |  |
+| 🪟 [Facade](https://github.com/JosephCalla/Design-Patterns-Swift#facade) | Memento | Prototype |
+| 👮‍♀️ [Proxy](https://github.com/JosephCalla/Design-Patterns-Swift#proxy-pattern) | 🧐 [Observer](https://github.com/JosephCalla/Design-Patterns-Swift#-observer-pattern) |  |
 | Flyweight | State |  |
 |  | Strategy |  |
 |  | Template Method |  |
@@ -578,7 +578,7 @@ testVisitor()
 
 
 # Structural patterns
-## Adapter
+## ✌️ Adapter Pattern
 Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
 
 ![Screenshot 2022-11-26 at 19 26 34](https://user-images.githubusercontent.com/35270796/204113926-72659bc5-079f-4654-8293-802a7c1f0ff5.png)
@@ -638,7 +638,7 @@ testAdapter()
 
 🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
-## Facade
+## 🪟 Facade
 Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.
 
 **Problem**
@@ -712,7 +712,7 @@ testFacade()
 
 🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
-## Proxy pattern
+## 👮‍♀️ Proxy pattern
 Un proxy controla el acceso al objeto original, lo que le permite realizar algo antes o después de que la solicitud llegue al objeto original.
 
 **¿cuál es el beneficio?** Si necesita ejecutar algo antes o después de la lógica principal de la clase, el proxy le permite hacerlo sin cambiar esa clase. Dado que el proxy implementa la misma interfaz que la clase original, se puede pasar a cualquier cliente que espere un objeto de servicio real.
@@ -801,13 +801,13 @@ func testProxy() {
 
 testProxy()
 ```
-**Advantage of Adapter Pattern**
+**Advantage of Proxy Pattern**
 - 🟢 Puede controlar el objeto de servicio sin que los clientes lo sepan.
 - 🟢 Puede administrar el ciclo de vida del objeto de servicio cuando a los clientes no les importa.
 - 🟢 El proxy funciona incluso si el objeto de servicio no está listo o disponible.
 - 🟢 Principio abierto/cerrado . Puede introducir nuevos proxies sin cambiar el servicio o los clientes.
 
-**Disadvantages of Adapter Patter**
+**Disadvantages of Proxy Patter**
 - 🔴 El código puede volverse más complicado ya que necesita introducir muchas clases nuevas.
 - 🔴 La respuesta del servicio puede retrasarse.
 
