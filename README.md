@@ -233,6 +233,9 @@ class Penguin: Bird, SwimmingBird {
 }
 
 ```
+
+⏪ [Back to **SOLID**](https://github.com/JosephCalla/Design-Patterns-Swift#solid)
+
 ## Dependency inversion
 Depend upon abstractions, not concretions.
 
