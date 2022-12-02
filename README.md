@@ -234,7 +234,7 @@ Depend upon abstractions, not concretions.
 
 Different parts of your code should not depend on concrete classes. They don’t need that knowledge. This encourages the use of protocols instead of using concrete classes to connect parts of your app.
 
-
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 # Creational Patterns
 ## 🚧 Factory Method
@@ -297,7 +297,9 @@ testFactoryMethod()
 
 **Disadvantages of Factory Method Pattern**
 - 🔴 The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
- 
+
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
 ## 👷‍♂️ Builder Pattern
 
 Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
@@ -361,6 +363,9 @@ testBuilder()
 - 🔴 The overall complexity of the code increases since the pattern requires creating multiple new classes.
 
 
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
+
 ## 🧘 Singleton Pattern
 
 Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
@@ -400,6 +405,8 @@ func testSingleton() {
 - 🔴 The Singleton pattern can mask bad design, for instance, when the components of the program know too much about each other.
 - 🔴 The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times.
 - 🔴 It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write the tests. Or don’t use the Singleton pattern.
+
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 # Behavioral patterns
 ## 🧐 Observer Pattern
@@ -498,6 +505,7 @@ testObserver()
 **Disadvantages of Observer Patter**
 - 🔴 Subscribers are notified in random order.
 
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 ##  Visitor Pattern
 Visitor is a behavioral design pattern that lets you separate algorithms from the objects on which they operate.
@@ -620,6 +628,8 @@ testAdapter()
 **Disadvantages of Adapter Patter**
 - 🔴 The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
 
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
 ## Facade
 Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.
 
@@ -691,6 +701,8 @@ func testFacade() {
 
 testFacade()
 ```
+
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 ## Proxy pattern
 Un proxy controla el acceso al objeto original, lo que le permite realizar algo antes o después de que la solicitud llegue al objeto original.
@@ -791,4 +803,5 @@ testProxy()
 - 🔴 El código puede volverse más complicado ya que necesita introducir muchas clases nuevas.
 - 🔴 La respuesta del servicio puede retrasarse.
 
+🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
