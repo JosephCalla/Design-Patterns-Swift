@@ -2,12 +2,12 @@
 
 | Structural patterns | Behavioral patterns | Creational patterns |
 |-----|-----------|-----------|
-| ✌️ [Adapter](https://github.com/JosephCalla/Design-Patterns-Swift#adapter) | Chain of Responsibility | 🚧 [Factory Method](https://github.com/JosephCalla/Design-Patterns-Swift#-factory-method) |
+| ✌️ [Adapter](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-adapter-pattern) | Chain of Responsibility | 🚧 [Factory Method](https://github.com/JosephCalla/Design-Patterns-Swift#-factory-method) |
 | Decorator| Command | 👷‍ [Builder](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-builder-pattern) | 
 | Bridge | Iterator | 🧘 [Singleton](https://github.com/JosephCalla/Design-Patterns-Swift#-singleton-pattern) |
 | Composite | Mediator | Abstract Factory |
-| 🪟 [Facade](https://github.com/JosephCalla/Design-Patterns-Swift#facade) | Memento | Prototype |
-| 👮‍♀️ [Proxy](https://github.com/JosephCalla/Design-Patterns-Swift#proxy-pattern) | 🧐 [Observer](https://github.com/JosephCalla/Design-Patterns-Swift#-observer-pattern) |  |
+| 🪟 [Facade](https://github.com/JosephCalla/Design-Patterns-Swift#-facade) | Memento | Prototype |
+| 👮‍♀️ [Proxy](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-proxy-pattern) | 🧐 [Observer](https://github.com/JosephCalla/Design-Patterns-Swift#-observer-pattern) |  |
 | Flyweight | State |  |
 |  | Strategy |  |
 |  | Template Method |  |
