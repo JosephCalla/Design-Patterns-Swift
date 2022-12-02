@@ -139,6 +139,9 @@ func printCarsPrice(_ cars: [Car]) {
 
 printCarsPrice(cars)
 ```
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
 ## Liskov Substitution
 
 Establishes that a class that inherits from another can be used as its parent without needing to know the differences between them.
@@ -157,6 +160,7 @@ class UserDataBaseManager: UserDataBaseManagerProtocol {
   }
 }
 ```
+
 ## Interface segregation
 Clients should not be forced to depend upon interfaces they do not use.
 
@@ -234,7 +238,8 @@ Depend upon abstractions, not concretions.
 
 Different parts of your code should not depend on concrete classes. They don’t need that knowledge. This encourages the use of protocols instead of using concrete classes to connect parts of your app.
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
 
 # Creational Patterns
 ## 🚧 Factory Method
@@ -298,7 +303,7 @@ testFactoryMethod()
 **Disadvantages of Factory Method Pattern**
 - 🔴 The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 ## 👷‍♂️ Builder Pattern
 
@@ -363,7 +368,7 @@ testBuilder()
 - 🔴 The overall complexity of the code increases since the pattern requires creating multiple new classes.
 
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 
 ## 🧘 Singleton Pattern
@@ -406,7 +411,7 @@ func testSingleton() {
 - 🔴 The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times.
 - 🔴 It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write the tests. Or don’t use the Singleton pattern.
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 # Behavioral patterns
 ## 🧐 Observer Pattern
@@ -505,7 +510,7 @@ testObserver()
 **Disadvantages of Observer Patter**
 - 🔴 Subscribers are notified in random order.
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 ##  Visitor Pattern
 Visitor is a behavioral design pattern that lets you separate algorithms from the objects on which they operate.
@@ -567,8 +572,11 @@ func testVisitor() {
 testVisitor()
 // Print
 // Descuento 10% en Gasolina con tu tarjeta Black
-
 ```
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
+
 # Structural patterns
 ## Adapter
 Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
@@ -628,7 +636,7 @@ testAdapter()
 **Disadvantages of Adapter Patter**
 - 🔴 The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 ## Facade
 Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.
@@ -702,7 +710,7 @@ func testFacade() {
 testFacade()
 ```
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 ## Proxy pattern
 Un proxy controla el acceso al objeto original, lo que le permite realizar algo antes o después de que la solicitud llegue al objeto original.
@@ -803,5 +811,5 @@ testProxy()
 - 🔴 El código puede volverse más complicado ya que necesita introducir muchas clases nuevas.
 - 🔴 La respuesta del servicio puede retrasarse.
 
-🔙 [Menu] (https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
