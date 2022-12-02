@@ -498,6 +498,69 @@ testObserver()
 **Disadvantages of Observer Patter**
 - 🔴 Subscribers are notified in random order.
 
+
+##  Visitor Pattern
+Visitor is a behavioral design pattern that lets you separate algorithms from the objects on which they operate.
+
+The Visitor pattern suggests that you place the new behavior into a separate class called visitor, instead of trying to integrate it into existing classes. The original object that had to perform the behavior is now passed to one of the visitor’s methods as an argument, providing the method access to all necessary data contained within the object.
+
+![Screenshot 2022-12-02 at 09 58 43](https://user-images.githubusercontent.com/35270796/205321779-09ebc79d-5ea4-430a-93ad-b31fd4f5c4cb.png)
+
+```Swift
+protocol CrediCardVisitor {
+    func gassolineOffer(gassolineOffer: GasolinaOffer)
+    func flightOffer(flightOffer: FlightsOffer)
+}
+
+protocol OffertElement {
+    func accept(visitor: CrediCardVisitor)
+}
+
+class GasolinaOffer: OffertElement {
+    func accept(visitor: CrediCardVisitor) {
+        visitor.gassolineOffer(gassolineOffer: self)
+    }
+}
+
+class FlightsOffer: OffertElement {
+    func accept(visitor: CrediCardVisitor) {
+        visitor.flightOffer(flightOffer: self)
+    }
+}
+
+class ClassicCreditCardVisitor: CrediCardVisitor {
+    func gassolineOffer(gassolineOffer: GasolinaOffer) {
+        print("Descuento 3% en Gasolina con tu tarjeta clasica")
+    }
+    
+    func flightOffer(flightOffer: FlightsOffer) {
+        print("Descuento 5% en vuelos con tu tarjeta clasica")
+    }
+}
+
+
+class BlackCreditCardVisitor: CrediCardVisitor {
+    func gassolineOffer(gassolineOffer: GasolinaOffer) {
+        print("Descuento 10% en Gasolina con tu tarjeta Black")
+    }
+    
+    func flightOffer(flightOffer: FlightsOffer) {
+        print("Descuento 25% en Vuelos con tu tarjeta Black")
+    }
+}
+
+
+// TEST
+func testVisitor() {
+    let oferta = GasolinaOffer()
+    oferta.accept(visitor: BlackCreditCardVisitor())
+}
+
+testVisitor()
+// Print
+// Descuento 10% en Gasolina con tu tarjeta Black
+
+```
 # Structural patterns
 ## Adapter
 Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
