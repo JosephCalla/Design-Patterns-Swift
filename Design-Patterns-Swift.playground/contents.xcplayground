@@ -7,5 +7,7 @@
         <page name='Observer'/>
         <page name='Adapter'/>
         <page name='Facade'/>
+        <page name='Proxy'/>
+        <page name='Visitor'/>
     </pages>
 </playground>
