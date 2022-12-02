@@ -14,11 +14,11 @@
 |  | [Visitor](https://github.com/JosephCalla/Design-Patterns-Swift#visitor-pattern)|  |
 
 # SOLID
-- **S** - Single responsability principle
-- **O** - Open/Closed principle
-- **L** - Liskov substitution principle
-- **I** - Interface segregation principle
-- **D** - Dependency inversion principle
+- **[S](https://github.com/JosephCalla/Design-Patterns-Swift#single-responsability-principle)** - Single responsability principle
+- **[O](https://github.com/JosephCalla/Design-Patterns-Swift#openclosed)** - Open/Closed principle
+- **[L](https://github.com/JosephCalla/Design-Patterns-Swift#liskov-substitution)** - Liskov substitution principle
+- **[I](https://github.com/JosephCalla/Design-Patterns-Swift#interface-segregation)** - Interface segregation principle
+- **[D](https://github.com/JosephCalla/Design-Patterns-Swift#dependency-inversion)** - Dependency inversion principle
 
 ## Single responsability principle
 A class should have one responsability.
@@ -33,8 +33,7 @@ class CarBD {
 	func deleteCarDB(car: Car) {}
 }
 ```
-
-Is this class obserblable?
+⏪ [Back to **SOLID**](https://github.com/JosephCalla/Design-Patterns-Swift#solid)
 
 ## Open/Closed
 Software entities, including classes, modules and functions, should be open for extension but closed for modification.
@@ -139,8 +138,7 @@ func printCarsPrice(_ cars: [Car]) {
 
 printCarsPrice(cars)
 ```
-
-🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+⏪ [Back to **SOLID**](https://github.com/JosephCalla/Design-Patterns-Swift#solid)
 
 ## Liskov Substitution
 
@@ -160,6 +158,8 @@ class UserDataBaseManager: UserDataBaseManagerProtocol {
   }
 }
 ```
+
+⏪ [Back to **SOLID**](https://github.com/JosephCalla/Design-Patterns-Swift#solid)
 
 ## Interface segregation
 Clients should not be forced to depend upon interfaces they do not use.
@@ -238,8 +238,7 @@ Depend upon abstractions, not concretions.
 
 Different parts of your code should not depend on concrete classes. They don’t need that knowledge. This encourages the use of protocols instead of using concrete classes to connect parts of your app.
 
-🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
-
+⏪ [Back to **SOLID**](https://github.com/JosephCalla/Design-Patterns-Swift#solid)
 
 # Creational Patterns
 ## 🚧 Factory Method
