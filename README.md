@@ -11,7 +11,7 @@
 | Flyweight | State |  |
 |  | Strategy |  |
 |  | Template Method |  |
-|  | Visitor |  |
+|  | [Visitor](https://github.com/JosephCalla/Design-Patterns-Swift#visitor-pattern)|  |
 
 # SOLID
 - **S** - Single responsability principle
