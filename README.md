@@ -2,16 +2,16 @@
 
 | Structural patterns | Behavioral patterns | Creational patterns |
 |-----|-----------|-----------|
-| Adapter | Chain of Responsibility | 🚧 Factory Method |
-| Decorator| Command | 👷‍ Builder | 
-| Bridge | Iterator | 🧘 Singleton|
+| ✌️ [Adapter](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-adapter-pattern) | Chain of Responsibility | 🚧 [Factory Method](https://github.com/JosephCalla/Design-Patterns-Swift#-factory-method) |
+| Decorator| Command | 👷‍ [Builder](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-builder-pattern) | 
+| Bridge | Iterator | 🧘 [Singleton](https://github.com/JosephCalla/Design-Patterns-Swift#-singleton-pattern) |
 | Composite | Mediator | Abstract Factory |
-| Facate | Memento | Prototype |
-| Proxy | 🧐 Observer |  |
+| 🪟 [Facade](https://github.com/JosephCalla/Design-Patterns-Swift#-facade) | Memento | Prototype |
+| 👮‍♀️ [Proxy](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-proxy-pattern) | 🧐 [Observer](https://github.com/JosephCalla/Design-Patterns-Swift#-observer-pattern) |  |
 | Flyweight | State |  |
 |  | Strategy |  |
 |  | Template Method |  |
-|  | Visitor |  |
+|  | [Visitor](https://github.com/JosephCalla/Design-Patterns-Swift#visitor-pattern)|  |
 
 # SOLID
 - **S** - Single responsability principle
@@ -139,6 +139,9 @@ func printCarsPrice(_ cars: [Car]) {
 
 printCarsPrice(cars)
 ```
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
 ## Liskov Substitution
 
 Establishes that a class that inherits from another can be used as its parent without needing to know the differences between them.
@@ -157,6 +160,7 @@ class UserDataBaseManager: UserDataBaseManagerProtocol {
   }
 }
 ```
+
 ## Interface segregation
 Clients should not be forced to depend upon interfaces they do not use.
 
@@ -234,6 +238,7 @@ Depend upon abstractions, not concretions.
 
 Different parts of your code should not depend on concrete classes. They don’t need that knowledge. This encourages the use of protocols instead of using concrete classes to connect parts of your app.
 
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 
 # Creational Patterns
@@ -297,7 +302,9 @@ testFactoryMethod()
 
 **Disadvantages of Factory Method Pattern**
 - 🔴 The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best case scenario is when you’re introducing the pattern into an existing hierarchy of creator classes.
- 
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
 ## 👷‍♂️ Builder Pattern
 
 Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
@@ -361,6 +368,9 @@ testBuilder()
 - 🔴 The overall complexity of the code increases since the pattern requires creating multiple new classes.
 
 
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
+
 ## 🧘 Singleton Pattern
 
 Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
@@ -400,6 +410,8 @@ func testSingleton() {
 - 🔴 The Singleton pattern can mask bad design, for instance, when the components of the program know too much about each other.
 - 🔴 The pattern requires special treatment in a multithreaded environment so that multiple threads won’t create a singleton object several times.
 - 🔴 It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible in most languages, you will need to think of a creative way to mock the singleton. Or just don’t write the tests. Or don’t use the Singleton pattern.
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 # Behavioral patterns
 ## 🧐 Observer Pattern
@@ -498,8 +510,75 @@ testObserver()
 **Disadvantages of Observer Patter**
 - 🔴 Subscribers are notified in random order.
 
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
+##  Visitor Pattern
+Visitor is a behavioral design pattern that lets you separate algorithms from the objects on which they operate.
+
+The Visitor pattern suggests that you place the new behavior into a separate class called visitor, instead of trying to integrate it into existing classes. The original object that had to perform the behavior is now passed to one of the visitor’s methods as an argument, providing the method access to all necessary data contained within the object.
+
+![Screenshot 2022-12-02 at 09 58 43](https://user-images.githubusercontent.com/35270796/205321779-09ebc79d-5ea4-430a-93ad-b31fd4f5c4cb.png)
+
+```Swift
+protocol CrediCardVisitor {
+    func gassolineOffer(gassolineOffer: GasolinaOffer)
+    func flightOffer(flightOffer: FlightsOffer)
+}
+
+protocol OffertElement {
+    func accept(visitor: CrediCardVisitor)
+}
+
+class GasolinaOffer: OffertElement {
+    func accept(visitor: CrediCardVisitor) {
+        visitor.gassolineOffer(gassolineOffer: self)
+    }
+}
+
+class FlightsOffer: OffertElement {
+    func accept(visitor: CrediCardVisitor) {
+        visitor.flightOffer(flightOffer: self)
+    }
+}
+
+class ClassicCreditCardVisitor: CrediCardVisitor {
+    func gassolineOffer(gassolineOffer: GasolinaOffer) {
+        print("Descuento 3% en Gasolina con tu tarjeta clasica")
+    }
+    
+    func flightOffer(flightOffer: FlightsOffer) {
+        print("Descuento 5% en vuelos con tu tarjeta clasica")
+    }
+}
+
+
+class BlackCreditCardVisitor: CrediCardVisitor {
+    func gassolineOffer(gassolineOffer: GasolinaOffer) {
+        print("Descuento 10% en Gasolina con tu tarjeta Black")
+    }
+    
+    func flightOffer(flightOffer: FlightsOffer) {
+        print("Descuento 25% en Vuelos con tu tarjeta Black")
+    }
+}
+
+
+// TEST
+func testVisitor() {
+    let oferta = GasolinaOffer()
+    oferta.accept(visitor: BlackCreditCardVisitor())
+}
+
+testVisitor()
+// Print
+// Descuento 10% en Gasolina con tu tarjeta Black
+```
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
+
 # Structural patterns
-## Adapter
+## ✌️ Adapter Pattern
 Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
 
 ![Screenshot 2022-11-26 at 19 26 34](https://user-images.githubusercontent.com/35270796/204113926-72659bc5-079f-4654-8293-802a7c1f0ff5.png)
@@ -555,9 +634,11 @@ testAdapter()
 - 🟢 Open/Closed Principle. You can introduce new types of adapters into the program without breaking the existing client code, as long as they work with the adapters through the client interface.
 
 **Disadvantages of Adapter Patter**
-- 🔴  The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
+- 🔴 The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
 
-## Facate
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
+## 🪟 Facade
 Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.
 
 **Problem**
@@ -620,11 +701,115 @@ class CreditMarketFacade {
 
 /// Test
 func testFacade() {
-    let facate = CreditMarketFacade()
-    facate.showCreditBlack()
-    facate.showCreditGold()
-    facate.showCreditSilver()
+    let facade = CreditMarketFacade()
+    facade.showCreditBlack()
+    facade.showCreditGold()
+    facade.showCreditSilver()
 }
 
 testFacade()
 ```
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
+## 👮‍♀️ Proxy pattern
+Un proxy controla el acceso al objeto original, lo que le permite realizar algo antes o después de que la solicitud llegue al objeto original.
+
+**¿cuál es el beneficio?** Si necesita ejecutar algo antes o después de la lógica principal de la clase, el proxy le permite hacerlo sin cambiar esa clase. Dado que el proxy implementa la misma interfaz que la clase original, se puede pasar a cualquier cliente que espere un objeto de servicio real.
+
+Por lo tanto, las llamadas al objeto acaban ocurriendo indirectamente a traves del objeto proxy es el que actua como sustitu del objeto original, delegando las llamadas a los metodos de los objetos
+
+La **clase Proxy** tiene un campo de referencia que apunta a un objeto de servicio(clase a controlar). Una vez que el proxy finaliza su procesamiento (p. ej., inicialización diferida, registro, control de acceso, almacenamiento en caché, etc.), pasa la solicitud al objeto de servicio.
+
+Por lo general, los proxies administran el ciclo de vida completo de sus objetos de servicio.
+
+**💡 Formas de utilizar el patrón Proxy**
+
+🐞 Inicialización diferida (**proxy virtual**). Esto es cuando tiene un objeto de servicio pesado que desperdicia recursos del sistema al estar siempre activo, aunque solo lo necesite de vez en cuando.
+
+⚡️ En lugar de crear el objeto cuando se inicia la aplicación, puede retrasar la inicialización del objeto hasta el momento en que realmente se necesite.
+
+
+🐞 Control de acceso (**proxy de protección**). Aquí es cuando desea que solo los clientes específicos puedan usar el objeto de servicio; por ejemplo, cuando sus objetos son partes cruciales de un sistema operativo y los clientes son varias aplicaciones lanzadas (incluidas las maliciosas).
+
+⚡️ El proxy puede pasar la solicitud al objeto de servicio solo si las credenciales del cliente coinciden con algunos criterios.
+
+
+🐞 Ejecución local de un servicio remoto (**proxy remoto**). Esto es cuando el objeto de servicio se encuentra en un servidor remoto.
+
+⚡️ En este caso, el proxy pasa la solicitud del cliente a través de la red, manejando todos los detalles desagradables del trabajo con la red.
+
+
+🐞 Solicitudes de registro (**proxy de registro**). Aquí es cuando desea mantener un historial de solicitudes al objeto de servicio.
+
+⚡️ El proxy puede registrar cada solicitud antes de pasarla al servicio.n/
+
+
+🐞 Almacenamiento en caché de los resultados de la solicitud (**caching proxy**). Aquí es cuando necesita almacenar en caché los resultados de las solicitudes de los clientes y administrar el ciclo de vida de este caché, especialmente si los resultados son bastante grandes.
+
+⚡️ El proxy puede implementar el almacenamiento en caché para solicitudes recurrentes que siempre arrojan los mismos resultados. El proxy puede usar los parámetros de las solicitudes como claves de caché.
+
+
+🐞 **Referencia inteligente**. Esto es cuando necesita poder descartar un objeto pesado una vez que no haya clientes que lo usen.
+
+⚡️ El proxy puede realizar un seguimiento de los clientes que obtuvieron una referencia al objeto de servicio o sus resultados. De vez en cuando, el ⚡️ proxy puede revisar los clientes y verificar si todavía están activos. Si la lista de clientes se vacía, el proxy podría descartar el objeto de servicio y liberar los recursos del sistema subyacente.
+
+El proxy también puede rastrear si el cliente modificó el objeto de servicio. Luego, los objetos sin modificar pueden ser reutilizados por otros clientes.
+
+
+![Screenshot 2022-12-01 at 07 41 08](https://user-images.githubusercontent.com/35270796/205055409-1e6d4548-cfb3-4d54-89cb-cec336f94b8f.png)
+
+```Swift
+protocol Internet {
+    func connectTo(url: String)
+}
+
+class AccessToInternet: Internet {
+    func connectTo(url: String) {
+        print("Conectando a \(url)")
+    }
+}
+
+class ProxyInternet: Internet {
+    var internet = AccessToInternet()
+    var bannedUrl = [String]()
+    
+    init() {
+        bannedUrl.append("twitter.com")
+        bannedUrl.append("google.com")
+        bannedUrl.append("facebook.com")
+    }
+    
+    func connectTo(url: String) {
+        if (bannedUrl.contains(url)) {
+            print("Intentando conectar \(url)")
+            print("URL bloqueada - Accesso Denegado - Consulta a tu Administrador")
+        } else {
+            internet.connectTo(url: url)
+        }
+    }
+}
+
+// TEST
+
+func testProxy() {
+    let internet = ProxyInternet()
+    internet.connectTo(url: "udemy.com")
+    internet.connectTo(url: "twitter.com")
+}
+
+
+testProxy()
+```
+**Advantage of Proxy Pattern**
+- 🟢 Puede controlar el objeto de servicio sin que los clientes lo sepan.
+- 🟢 Puede administrar el ciclo de vida del objeto de servicio cuando a los clientes no les importa.
+- 🟢 El proxy funciona incluso si el objeto de servicio no está listo o disponible.
+- 🟢 Principio abierto/cerrado . Puede introducir nuevos proxies sin cambiar el servicio o los clientes.
+
+**Disadvantages of Proxy Patter**
+- 🔴 El código puede volverse más complicado ya que necesita introducir muchas clases nuevas.
+- 🔴 La respuesta del servicio puede retrasarse.
+
+🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
+
