@@ -579,6 +579,12 @@ testVisitor()
 🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 ## Strategy
+Strategy is a behavioral design pattern that lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.
+
+The Strategy pattern suggests that you take a class that does something specific in a lot of different ways and extract all of these algorithms into separate classes called strategies.
+
+
+
 ![Screenshot 2022-12-02 at 12 41 55](https://user-images.githubusercontent.com/35270796/205357297-f70955a2-ba6f-4e1a-8bff-9c42cf713841.png)
 
 ```Swift
