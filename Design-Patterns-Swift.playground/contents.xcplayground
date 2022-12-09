@@ -9,5 +9,6 @@
         <page name='Facade'/>
         <page name='Proxy'/>
         <page name='Visitor'/>
+        <page name='Strategy'/>
     </pages>
 </playground>
