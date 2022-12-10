@@ -296,6 +296,65 @@ func testFactoryMethod() {
 
 testFactoryMethod()
 ```
+
+
+```Swift
+// Se define un protocolo llamado "Vehicle" que incluye un método "transport"
+// que recibe un parámetro "passengers"
+protocol Vehicle {
+    func transport(passengers: Int)
+}
+
+// Se define una clase "Car" que implementa el protocolo "Vehicle"
+// y provee una implementación para el método "transport"
+class Car: Vehicle {
+    func transport(passengers: Int) {
+        print("Transporting \(passengers) passengers in a car")
+    }
+}
+
+// Se define una clase "Bus" que implementa el protocolo "Vehicle"
+// y provee una implementación para el método "transport"
+class Bus: Vehicle {
+    func transport(passengers: Int) {
+        print("Transporting \(passengers) passengers in a bus")
+    }
+}
+
+// Se define una clase "Train" que implementa el protocolo "Vehicle"
+// y provee una implementación para el método "transport"
+class Train: Vehicle {
+    func transport(passengers: Int) {
+        print("Transporting \(passengers) passengers in a train")
+    }
+}
+
+// Se define una clase "VehicleFactory" que contiene un método de clase "createVehicle"
+// que recibe un parámetro "type" y devuelve una instancia del tipo de vehículo especificado.
+// Si el tipo especificado no es válido, devuelve "nil"
+class VehicleFactory {
+    static func createVehicle(type: String) -> Vehicle? {
+        switch type {
+            case "car":
+                return Car()
+            case "bus":
+                return Bus()
+            case "train":
+                return Train()
+            default:
+                return nil
+        }
+    }
+}
+
+// Se crea una instancia de "Car" utilizando la fábrica y se llama al método "transport"
+let car = VehicleFactory.createVehicle(type: "car")
+car?.transport(passengers: 4) // Transporting 4 passengers in a car
+
+// Se crea una instancia de "Bus" utilizando la fábrica y se llama al método "transport"
+let bus = VehicleFactory.createVehicle(type: "bus")
+bus?.transport(passengers: 20) // Transporting 20 passengers in a bus
+```
 **Advantage of Factory Method Pattern**
 
 - 🟢 You avoid tight coupling between the creator and the concrete products.
