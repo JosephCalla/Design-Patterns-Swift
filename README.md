@@ -297,6 +297,7 @@ func testFactoryMethod() {
 testFactoryMethod()
 ```
 
+**Example 2**
 
 ```Swift
 // Se define un protocolo llamado "Vehicle" que incluye un método "transport"
