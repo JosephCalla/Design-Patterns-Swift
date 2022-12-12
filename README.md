@@ -756,6 +756,65 @@ testAdapter()
 
 🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
+## Decorator 
+Decorator is a structural design pattern that lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.
+
+El patrón decorator es un patrón de diseño de software que permite añadir comportamientos a un objeto existente en tiempo de ejecución, de manera dinámica. Esto se logra envolviendo el objeto existente en uno o más objetos decorator que proporcionan el comportamiento adicional.
+
+Aquí hay un ejemplo simple de cómo implementar el patrón decorator en Swift:
+
+```Swift
+// La clase base que queremos decorar
+class Beverage {
+  var description: String = "Unknown Beverage"
+
+  func getDescription() -> String {
+    return description
+  }
+
+  func cost() -> Double {
+    fatalError("cost() has not been implemented")
+  }
+}
+
+// Una clase decoradora concreta
+class Mocha: Beverage {
+  override init() {
+    super.init()
+    description = "Mocha"
+  }
+
+  override func cost() -> Double {
+    return 0.20 + super.cost()
+  }
+}
+
+// Otra clase decoradora concreta
+class Whip: Beverage {
+  override init() {
+    super.init()
+    description = "Whip"
+  }
+
+  override func cost() -> Double {
+    return 0.10 + super.cost()
+  }
+}
+
+// Creamos una bebida simple
+let simpleBeverage = Beverage()
+simpleBeverage.getDescription()  // "Unknown Beverage"
+
+// Creamos una bebida con una capa de Mocha
+let mochaBeverage = Mocha(simpleBeverage)
+mochaBeverage.getDescription()  // "Mocha, Unknown Beverage"
+
+// Creamos una bebida con dos capas: Mocha y Whip
+let doubleBeverage = Whip(Mocha(simpleBeverage))
+doubleBeverage.getDescription()  // "Whip, Mocha, Unknown Beverage"
+
+```
+
 ## 🪟 Facade
 Facade is a structural design pattern that provides a simplified interface to a library, a framework, or any other complex set of classes.
 
