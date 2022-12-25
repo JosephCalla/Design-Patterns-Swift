@@ -1,7 +1,7 @@
 # Design-Patterns-Swift
 
 | Structural patterns | Behavioral patterns | Creational patterns |
-|-----|-----------|-----------|
+|---------------------|---------------------|---------------------|
 | ✌️ [Adapter](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-adapter-pattern) | Chain of Responsibility | 🚧 [Factory Method](https://github.com/JosephCalla/Design-Patterns-Swift#-factory-method) |
 | [Decorator](https://github.com/JosephCalla/Design-Patterns-Swift/blob/main/README.md#decorator)| Command | 👷‍ [Builder](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-builder-pattern) | 
 | Bridge | Iterator | 🧘 [Singleton](https://github.com/JosephCalla/Design-Patterns-Swift#-singleton-pattern) |
@@ -9,7 +9,7 @@
 | 🪟 [Facade](https://github.com/JosephCalla/Design-Patterns-Swift#-facade) | Memento | Prototype |
 | 👮‍♀️ [Proxy](https://github.com/JosephCalla/Design-Patterns-Swift#%EF%B8%8F-proxy-pattern) | 🧐 [Observer](https://github.com/JosephCalla/Design-Patterns-Swift#-observer-pattern) |  |
 | Flyweight | State |  |
-|  | [Strategy](https://github.com/JosephCalla/Design-Patterns-Swift/blob/main/README.md#strategy) |  |
+| [Coordinator]() | [Strategy](https://github.com/JosephCalla/Design-Patterns-Swift/blob/main/README.md#strategy) |  |
 |  | Template Method |  |
 |  | [Visitor](https://github.com/JosephCalla/Design-Patterns-Swift#visitor-pattern)|  |
 
@@ -696,6 +696,35 @@ testStrategy()
 🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
 # Structural patterns
+## Coodinator Pattern 
+Gestiona la navegación y el flujo de trabajo en la aplicación. Se basa en separar la lógica de navegación y flujo de trabajo de la vista y el controlador de vista para mejorar la separación de responsabilidades y facilitar la prueba y el mantenimiento de la aplicación
+
+```Swift
+class AppCoordinator: Coordinator {
+  var window: UIWindow
+  var rootViewController: UINavigationController
+
+  init(window: UIWindow) {
+    self.window = window
+    self.rootViewController = UINavigationController()
+  }
+
+  func start() {
+    window.rootViewController = rootViewController
+    let vc = HomeViewController.instantiate()
+    vc.coordinator = self
+    rootViewController.pushViewController(vc, animated: false)
+    window.makeKeyAndVisible()
+  }
+
+  func showDetailView(item: Item) {
+    let vc = DetailViewController.instantiate()
+    vc.item = item
+    vc.coordinator = self
+    rootViewController.pushViewController(vc, animated: true)
+  }
+}
+``
 ## ✌️ Adapter Pattern
 Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
 
