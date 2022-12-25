@@ -724,7 +724,8 @@ class AppCoordinator: Coordinator {
     rootViewController.pushViewController(vc, animated: true)
   }
 }
-``
+```
+
 ## ✌️ Adapter Pattern
 Objetivo: 2 interfaces no relacionadas puedan trabajar juntas sin ningun tipo de problema.
 
