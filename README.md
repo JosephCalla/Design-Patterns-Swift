@@ -420,6 +420,75 @@ testBuilder()
 
 ```
 
+```Swift
+import Foundation
+
+// The Product class represents the object that we want to build
+class Product {
+  // Properties of the Product object
+  var name: String
+  var price: Double
+  var quantity: Int
+
+  // Initializes a new Product instance with the specified properties
+  init(name: String, price: Double, quantity: Int) {
+    self.name = name
+    self.price = price
+    self.quantity = quantity
+  }
+}
+
+// The ProductBuilder class is a builder for creating instances of Product
+class ProductBuilder {
+  // Properties of the Product object
+  private var name: String = ""
+  private var price: Double = 0.0
+  private var quantity: Int = 0
+
+  // Sets the name of the Product object and returns the builder
+  func setName(name: String) -> ProductBuilder {
+    self.name = name
+    return self
+  }
+
+  // Sets the price of the Product object and returns the builder
+  func setPrice(price: Double) -> ProductBuilder {
+    self.price = price
+    return self
+  }
+
+  // Sets the quantity of the Product object and returns the builder
+  func setQuantity(quantity: Int) -> ProductBuilder {
+    self.quantity = quantity
+    return self
+  }
+
+  // Creates and returns a new Product instance with the specified properties
+  func build() -> Product {
+    return Product(name: self.name, price: self.price, quantity: self.quantity)
+  }
+}
+
+// Create a new Product instance using the builder
+let product = ProductBuilder()
+  .setName(name: "Product A")
+  .setPrice(price: 99.99)
+  .setQuantity(quantity: 10)
+  .build()
+
+// Print the properties of the Product instance
+print(product.name)  // prints "Product A"
+print(product.price) // prints 99.99
+print(product.quantity) // prints 10
+
+```
+
+**When to use it**
+- When you have an object with many optional parameters that can be set in different combinations.
+- When you want to create an immutable object.
+- When you want to create a complex object in a simple way.
+- When you want to create a customizable object.
+
 **Advantage of Builder Pattern**
 
 - 🟢 You can construct objects step-by-step, defer construction steps or run steps recursively.
