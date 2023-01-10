@@ -1087,5 +1087,6 @@ testProxy()
 - 🔴 El código puede volverse más complicado ya que necesita introducir muchas clases nuevas.
 - 🔴 La respuesta del servicio puede retrasarse.
 
+
 🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
