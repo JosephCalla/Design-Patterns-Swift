@@ -849,9 +849,17 @@ testAdapter()
 **Advantage of Adapter Pattern**
 - 🟢 Single Responsibility Principle. You can separate the interface or data conversion code from the primary business logic of the program.
 - 🟢 Open/Closed Principle. You can introduce new types of adapters into the program without breaking the existing client code, as long as they work with the adapters through the client interface.
+- Interoperability between classes: Facilitates collaboration between objects with incompatible interfaces.
+- Code reuse: Allows the use of existing classes without having to modify their code.
+- Separation of responsibilities: Helps follow the single responsibility principle, keeping adaptation logic separate from the business code.
+- Design flexibility: Increases flexibility by allowing changes to interfaces without altering the code that depends on them.
 
 **Disadvantages of Adapter Patter**
 - 🔴 The overall complexity of the code increases because you need to introduce a set of new interfaces and classes. Sometimes it’s simpler just to change the service class so that it matches the rest of your code.
+- Complejidad adicional: Introduce una capa extra de complejidad en el diseño de la aplicación.
+- Impacto en el rendimiento: Puede causar una sobrecarga leve debido a la abstracción adicional.
+- Mantenimiento: Si se usa en exceso o de forma inapropiada, puede complicar el mantenimiento del código.
+- Rigidez: En casos de adaptaciones complejas o cambios frecuentes en la interfaz objetivo, puede resultar en rigidez y necesidad de actualización constante del adaptador.
 
 🔙 [Back To Menu](https://github.com/JosephCalla/Design-Patterns-Swift#design-patterns-swift)
 
